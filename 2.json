@@ -1,0 +1,46 @@
+[
+  {
+    "code": "012c1c49-bba7-4030-ab08-8d792818c499",
+    "name": "先知社区",
+    "category": "安全",
+    "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAEM0lEQVRYhcVZ+VMaaRB9wIAXxqgonqsCIl7RRHfLmEq5qVTl387uJroecdVKIhAxqAnqImpMVBjOdH9ZtxhmCNfovN+0p4bn6+7X3Wg6PDzMwWBcXHzF/kEEoz4PrFarImY2iNP/yGSyOP43hqXlN5CTKVXccILR6Am2/UGE9z4hk06r4oYSTJJiO7t72NzahizLyOXU1WYowVjsFIFACLtEshgMJbiytolAMISshnI3kPJ/iBwe469Xy7p8eG9vN7yeIXR1dapiaaq1cPgT/IEdnMTO6DdlEjw7/4LFpbWayTU0NqC+vh7WMa8qxnV2fR0XXfs5ckR1mITFUjyRCoJJOfXfX1QbRrxuOJ0OtN5vUcXi8QT29j9jY/Od8L9SkEo+UQFMJnqhZMXszBSl1wWzWakMqxeNxvDq9YrIVjqdKflOXZuEyflG3KSgC21t91Xxq6tr7JHfvVnfEhZTDnQjaCL57PZGPFuYRzc1RqF6jBDZyRqRiye0Pe9WCTY32zE26oV32IWmpkZVPEa1zZbCxlwuOd0ISpJFqPbk8SxaWu5RV1oU8Ww2KywlENwtqzEU79aD4L3mZnjcA5ieGtcgl8O3yyusb7yleXtQ8bt1UdBLTfHbrw9V5BhyUsbrxVUc0Doly8m7J9jb00Wd68Ev/b2qGHdqlFap5ZV/cHp2XlHt6UKQFZuc8AljbqTpUYjzLxdYpXnLI7Qa9WoiyOR4zj6YHBUqFiKeSGCfJsbfq+tIVGArhaiqSdjzGhrqRdf29/Wgrs6miDOZo6Mo3m0HEYkcV0XsBlUpaKO7oauzA4/nZmhitKri6UxGeB5PjFpRFUFHRxsWFubEMsAeWAi/f0f4XqWep4WKU8wTwz30w/NsGqnlebu59R4fwwdlLQO6EuTa6+/rFo3R2eFQxVOpNII7HxH8sIvT0/OayTEqSjE3hm9kGFOkXiF4nF3SxHj5cpHOyJOqu7YmgpPjPnFc2+1NqtjXb5d4+z5Ay0BYpFkvlJViXp2Y1PT0OAYH+mDmzTQPGVLv6DiKP/5cEuT0Uk98djkPWa0SHj2cgNs1IJqkELwl+/0fdGuMfJRUkMk5HG2Yn5tFh6NdNEo+kqmUuGv5+OaJoTdKKsir1ATVnsc9qDlvuVv9vIiGwrqTK0nQQrXX0+PEi+dP6Yys03xmZXWDTDkkuvg28NMU8/EtPI/GWuGNwcc3n488MfgrjNtCUYKsmHd4iAiOwWazqh+gWuT65HVLa5upBGYzH1x2WjrUWSpKsI/U8/mGxeTQAqffScq2L7Qil63dVjhDWmWkIshdygvAzKMH4vjWWuNvnvvxQu3a1AuqJmFybtegmBhsL0ZDQZAtjq3k2e90fHc7f/qlzl1BwYDH2SgdQMXmrRFQEGxvb8U8rfFiES1Se3cNU/6/IdhsM7SuS5KkGmlG4Tse1qU+/puIjAAAAABJRU5ErkJggg==",
+    "target": "SEARCH",
+    "home": "https://xz.aliyun.com",
+    "author": "hualuo",
+    "description": "安全",
+    "parser": "CSS",
+    "rules": {
+      "https://xz\\.aliyun\\.com/search\\?page=\\d+&keyword=.+": {
+        "list": {
+          "expression": "table tbody tr",
+          "title": {
+            "expression": "td p.topic-summary a",
+            "attribute": "title"
+          },
+          "dateTime": {
+            "expression": "td p.topic-info"
+          },
+          "link": {
+            "expression": "td p.topic-summary a[class]:not(.comments)",
+            "attribute": "href",
+            "prefix": "{home}"
+          }
+        },
+        "next": {
+          "expression": "div div.span10 div div div.pagination.clearfix ul li:nth-child(3) a",
+          "attribute": "href",
+          "prefix": "{home}"
+        }
+      }
+    },
+    "search": "{home}/search?page=1&keyword={query}",
+    "properties": {
+      "SEARCH_LITE_SUPPORT": "true",
+      "SEARCH_LITE_TITLE_TEMPLATE": "#title{${i.title}}#datetime{${i.datetime}}",
+      "SEARCH_LITE_DESC_TEMPLATE": "#description{${i.link}}#link{${i.link}}",
+      "SEARCH_LITE_IMAGE_TEMPLATE": "",
+      "SEARCH_LITE_KEYS": "先知社区",
+      "TEST_SEARCH_KEY": "xianzhi"
+    }
+  }
+]
